@@ -1,58 +1,89 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# TecnoStar — Sistema de Gestión de Cuentas y Suscripciones de Streaming
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema web profesional desarrollado a medida para **TecnoStar**, marca con más de 5 años en el mercado y más de 100 clientes activos en la comercialización de cuentas completas y perfiles individuales de plataformas de streaming (Netflix, Disney+, Star+, HBO Max, Prime Video, Spotify, Magis TV, YouTube Premium, Paramount+ y En Vivo Play).
 
-## About Laravel
+Este proyecto migra la operativa histórica basada en Excel hacia una plataforma web segura, relacional y orientada a la automatización de cobros y control de inventario.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Stack Tecnológico
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Backend:** PHP 8.4+ / Laravel 11/12
+- **Base de Datos:** MySQL / MariaDB (charset `utf8mb4`, collation `utf8mb4_unicode_ci`)
+- **Frontend:** Vistas Blade (HTML5 + CSS/JS nativo responsivo, sin dependencias complejas de frontend)
+- **Entorno de Desarrollo:** XAMPP sobre Windows (puerto 3306)
+- **Entorno de Despliegue:** Servidor Linux Ubuntu Server con Apache/Nginx + PHP-FPM + MariaDB
+- **Zona Horaria y Región:** `America/Guayaquil` (Ecuador, UTC-5), localización `es`
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🏛️ Arquitectura del Sistema (MVC + Capa de Servicios)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+El sistema sigue una separación estricta de responsabilidades:
+- **Modelos (`app/Models/`):** Representación de entidades, relaciones Eloquent, scopes de consulta y casts de seguridad (`encrypted` para contraseñas de cuentas de proveedores).
+- **Controladores (`app/Http/Controllers/`):** Controladores delgados orientados exclusivamente a la recepción de peticiones HTTP y renderizado de vistas.
+- **Validaciones (`app/Http/Requests/`):** Form Requests dedicados para validación estricta de formularios y sanitización de datos.
+- **Capa de Servicios (`app/Services/`):**
+  - `FinancialReportService`: Métricas financieras en tiempo real (Ingresos, Egresos, Ganancia Neta y Margen).
+  - `WhatsAppMessageService`: Generación dinámica de enlaces `wa.me` para cobros (💰), actualización de claves (🔐) y entrega de datos (💻).
+  - `SubscriptionLifecycleService`: Control de estados y liberación de perfiles.
+  - `ExcelImportService`: Sanitización e ingestión histórica desde el Excel.
+- **Vistas (`resources/views/`):** Plantillas Blade modulares en español.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+## 📊 Estado Actual del Proyecto y Hoja de Ruta
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+| Fase | Descripción | Estado |
+| :---: | :--- | :---: |
+| **Fase 0** | **Entorno y Configuración Base** (PHP 8.4, Composer, Git, BD `tecnostar`, `.env`, `AGENT.md`) | ✅ Completada |
+| **Fase 1** | **Análisis del Negocio y Requisitos** ([docs/01-analisis.md](docs/01-analisis.md)) | ✅ Completada |
+| **Fase 2** | **Diseño de Base de Datos (DER) y Pantallas** ([docs/02-diseno.md](docs/02-diseno.md)) | ✅ Completada |
+| **Fase 3** | **Migraciones y Modelos Eloquent** (Tablas, llaves foráneas, índices, casts y relaciones) | ⏳ Siguiente paso |
+| **Fase 4** | **Autenticación y CRUDs Base** (Tablero operativo de vencimientos, cuentas, perfiles, clientes) | 🔜 Pendiente |
+| **Fase 5** | **Importación de Datos Históricos del Excel** (Sanitizador de precios y teléfonos con auditoría) | 🔜 Pendiente |
+| **Fase 6** | **Módulo Financiero y Cobros** (Reportes de ganancia dinámica y registro de pagos) | 🔜 Pendiente |
+| **Fase 7** | **Pruebas y Control de Calidad** | 🔜 Pendiente |
+| **Fase 8** | **Despliegue en Servidor Ubuntu** (SSL HTTPS, backups automáticos por Cron) | 🔜 Pendiente |
+| **Fase 9** | **Automatización Avanzada** (Scheduler para alertas automáticas en base de datos) | 🔜 Pendiente |
 
-```bash
-composer require laravel/boost --dev
+---
 
-php artisan boost:install
-```
+## 📂 Documentación del Proyecto
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Toda la documentación técnica se mantiene en la carpeta [`/docs`](docs/README.md):
+- [**01-analisis.md**](docs/01-analisis.md): Diagnóstico exhaustivo del Excel histórico, catálogo de servicios, requisitos funcionales (RF) y no funcionales (RNF).
+- [**02-diseno.md**](docs/02-diseno.md): Diagrama Entidad-Relación (DER Mermaid), diccionario de datos MySQL, fórmulas financieras dinámicas y wireframes del tablero de vencimientos.
+- [**AGENT.md**](AGENT.md): Guía de referencia técnica para agentes y desarrolladores, reglas mandatorias y registro de memoria del proyecto.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## ⚙️ Puesta en Marcha Local (Desarrollo con XAMPP)
 
-## Code of Conduct
+1. **Requisitos:**
+   - PHP >= 8.2 con extensiones `pdo_mysql`, `openssl`, `mbstring`.
+   - Composer 2.x.
+   - MySQL / MariaDB (XAMPP activo en puerto 3306).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. **Configuración de base de datos:**
+   - Crear la base de datos `tecnostar`:
+     ```sql
+     CREATE DATABASE tecnostar CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+     ```
 
-## Security Vulnerabilities
+3. **Variables de entorno:**
+   - Copiar `.env.example` a `.env` y configurar las credenciales locales de MySQL.
+   - Generar la llave de la aplicación:
+     ```bash
+     php artisan key:generate
+     ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4. **Ejecutar migraciones:**
+   ```bash
+   php artisan migrate
+   ```
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5. **Servidor local:**
+   ```bash
+   php artisan serve
+   ```

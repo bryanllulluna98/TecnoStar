@@ -74,8 +74,29 @@ Actualmente la gestión se encuentra en un archivo Excel (`Ultimo_1_chat_1_.xlsx
   - [x] Paso 3: Creación de BD `tecnostar`, configuración de `.env` (`es`, `America/Guayaquil`, MySQL) y ejecución de migraciones base.
   - [x] Paso 4: Creación de `AGENT.md` y estructura de `/docs`.
 - [x] **Fase 1: Análisis y requisitos (`docs/01-analisis.md`)**
-- [ ] **Fase 2: Diseño de base de datos y pantallas (`docs/02-diseno.md`)**
+- [x] **Fase 2: Diseño de base de datos y pantallas (`docs/02-diseno.md`)**
 - [ ] **Fase 3: Migraciones y modelos**
+
+---
+
+## 7. Registro de Decisiones de Arquitectura y Memoria del Proyecto
+
+### 7.1. Decisiones Técnicas Clave
+- **Seguridad en reposo (Regla 5):** `provider_accounts.password` usa el cast `encrypted` de Laravel (cifrado AES-256-CBC). Nunca se guarda en texto claro en la base de datos.
+- **Tipado Monetario:** Toda columna financiera (`cost`, `price`, `amount`, `suggested_price`) se define estrictamente como `DECIMAL(8,2)`.
+- **Cálculo Financiero Dinámico:** Ingresos, egresos y ganancias netas se derivan en tiempo real de consultas `SUM()` sobre `payments` y `provider_accounts`. Se prohíben campos estáticos de totales en la base de datos.
+- **Normalización de Teléfonos:** Formato estándar internacional E.164 (`+593...` para Ecuador, `+34...` para clientes extranjeros). Clientes sin teléfono o dudosos se marcan con el flag booleano `needs_contact_review = true`.
+- **Modalidades de Servicio:** Soporte para servicios por perfiles (Netflix, Disney+, HBO Max, Prime Video) y cuentas completas (Spotify individual/familiar, Magis TV).
+- **Control de Vencimientos:** Tablero operativo con categorización por urgencia (vencen hoy, vencen en 1-3 días, vencidos sin cobrar) y disparadores de WhatsApp codificados (`wa.me`).
+
+### 7.2. Estado del Repositorio y Entorno
+- **Rama:** `master`
+- **Base de datos:** `tecnostar` sobre MySQL (MariaDB XAMPP puerto 3306) con cotejamiento `utf8mb4_unicode_ci`.
+- **Commits realizados:**
+  - `46c21a4`: `chore: initial Laravel project setup`
+  - `affeb1a`: `chore: configure database connection, timezone and locale`
+  - `8028b23`: `docs: add AGENT.md and docs structure for phase tracking`
+  - `7be5d48`: `docs: complete Phase 1 business analysis and requirements based on Excel data`
 - [ ] **Fase 4: Login y CRUDs base (clientes, servicios, cuentas, perfiles, suscripciones, tablero de vencimientos)**
 - [ ] **Fase 5: Importación del Excel con reporte de inconsistencias**
 - [ ] **Fase 6: Cobros, pagos y reportes de ganancia**
