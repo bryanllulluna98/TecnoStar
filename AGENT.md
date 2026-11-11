@@ -73,7 +73,7 @@ Actualmente la gestión se encuentra en un archivo Excel (`Ultimo_1_chat_1_.xlsx
   - [x] Paso 2: Instalación de Laravel e inicialización del repositorio Git.
   - [x] Paso 3: Creación de BD `tecnostar`, configuración de `.env` (`es`, `America/Guayaquil`, MySQL) y ejecución de migraciones base.
   - [x] Paso 4: Creación de `AGENT.md` y estructura de `/docs`.
-- [ ] **Fase 1: Análisis y requisitos (`docs/01-analisis.md`)**
+- [x] **Fase 1: Análisis y requisitos (`docs/01-analisis.md`)**
 - [ ] **Fase 2: Diseño de base de datos y pantallas (`docs/02-diseno.md`)**
 - [ ] **Fase 3: Migraciones y modelos**
 - [ ] **Fase 4: Login y CRUDs base (clientes, servicios, cuentas, perfiles, suscripciones, tablero de vencimientos)**
