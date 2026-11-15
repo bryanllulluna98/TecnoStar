@@ -75,7 +75,8 @@ Actualmente la gestión se encuentra en un archivo Excel (`Ultimo_1_chat_1_.xlsx
   - [x] Paso 4: Creación de `AGENT.md` y estructura de `/docs`.
 - [x] **Fase 1: Análisis y requisitos (`docs/01-analisis.md`)**
 - [x] **Fase 2: Diseño de base de datos y pantallas (`docs/02-diseno.md`)**
-- [ ] **Fase 3: Migraciones y modelos**
+- [x] **Fase 3: Migraciones y modelos**
+- [ ] **Fase 4: Login y CRUDs base (clientes, servicios, cuentas, perfiles, suscripciones, tablero de vencimientos)**
 
 ---
 
