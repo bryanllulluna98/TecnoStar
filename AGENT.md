@@ -90,17 +90,24 @@ Actualmente la gestión se encuentra en un archivo Excel (`Ultimo_1_chat_1_.xlsx
 - **Normalización de Teléfonos:** Formato estándar internacional E.164 (`+593...` para Ecuador, `+34...` para clientes extranjeros). Clientes sin teléfono o dudosos se marcan con el flag booleano `needs_contact_review = true`.
 - **Modalidades de Servicio:** Soporte para servicios por perfiles (Netflix, Disney+, HBO Max, Prime Video) y cuentas completas (Spotify individual/familiar, Magis TV).
 - **Control de Vencimientos:** Tablero operativo con categorización por urgencia (vencen hoy, vencen en 1-3 días, vencidos sin cobrar) y disparadores de WhatsApp codificados (`wa.me`).
+- **Desambiguación en Relaciones hasManyThrough:** En consultas agregadas (`withCount`) que involucran uniones (`hasManyThrough`), especificar siempre el origen de la columna (ej. `profiles.status` en lugar de `status`) para evitar la ambigüedad SQL ante columnas homónimas en tablas intermedias.
+- **Identidad Visual y Assets:** Inclusión del logotipo oficial en `public/images/logo.png`, integrado en vistas Blade con `asset()` y fallback preventivo.
 
 ### 7.2. Estado del Repositorio y Entorno
-- **Rama:** `master`
+- **Rama:** `main`
 - **Base de datos:** `tecnostar` sobre MySQL (MariaDB XAMPP puerto 3306) con cotejamiento `utf8mb4_unicode_ci`.
 - **Commits realizados:**
   - `46c21a4`: `chore: initial Laravel project setup`
   - `affeb1a`: `chore: configure database connection, timezone and locale`
   - `8028b23`: `docs: add AGENT.md and docs structure for phase tracking`
   - `7be5d48`: `docs: complete Phase 1 business analysis and requirements based on Excel data`
-- [x] **Fase 4: Login y CRUDs base (clientes, servicios, cuentas, perfiles, suscripciones, tablero de vencimientos)**
-- [ ] **Fase 5: Importación del Excel con reporte de inconsistencias**
+  - `c9c5734`: `docs: complete Phase 2 database design, DER and UI wireframes, update README and AGENT memory`
+  - `3a288bc`: `feat: create database migrations, Eloquent models, and base seeders`
+  - `97d2b19`: `feat: implement authentication, layout, CRUDs, WhatsApp service, and expirations dashboard`
+
+---
+
+## 8. Hoja de Ruta Restante
 - [ ] **Fase 5: Importación del Excel con reporte de inconsistencias**
 - [ ] **Fase 6: Cobros, pagos y reportes de ganancia**
 - [ ] **Fase 7: Pruebas del sistema**

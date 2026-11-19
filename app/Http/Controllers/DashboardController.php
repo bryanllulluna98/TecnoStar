@@ -61,11 +61,13 @@ class DashboardController extends Controller
         $servicesStock = Service::where('is_active', true)
             ->withCount([
                 'profiles as total_profiles',
+
                 'profiles as free_profiles' => function ($query) {
-                    $query->where('status', 'free');
+                    $query->where('profiles.status', 'free');
                 },
+
                 'profiles as occupied_profiles' => function ($query) {
-                    $query->where('status', 'occupied');
+                    $query->where('profiles.status', 'occupied');
                 },
             ])
             ->get();

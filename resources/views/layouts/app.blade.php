@@ -18,9 +18,11 @@
     <aside class="w-full md:w-64 bg-slate-900 border-r border-slate-800 flex flex-col flex-shrink-0">
         <!-- Logo -->
         <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-800">
-            <span class="text-2xl">⭐</span>
+            <div class="w-9 h-9 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center p-1 overflow-hidden flex-shrink-0">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='⭐';">
+            </div>
             <div>
-                <span class="text-lg font-bold tracking-tight text-white block leading-tight">TecnoStar</span>
+                <span class="text-base font-bold tracking-tight text-white block leading-tight">TecnoStar</span>
                 <span class="text-[10px] uppercase tracking-wider text-amber-400 font-semibold">Streaming Pro</span>
             </div>
         </div>
