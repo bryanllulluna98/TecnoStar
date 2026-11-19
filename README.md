@@ -40,8 +40,8 @@ El sistema sigue una separación estricta de responsabilidades:
 | **Fase 1** | **Análisis del Negocio y Requisitos** ([docs/01-analisis.md](docs/01-analisis.md)) | ✅ Completada |
 | **Fase 2** | **Diseño de Base de Datos (DER) y Pantallas** ([docs/02-diseno.md](docs/02-diseno.md)) | ✅ Completada |
 | **Fase 3** | **Migraciones y Modelos Eloquent** (Tablas, llaves foráneas, índices, casts y relaciones) | ✅ Completada |
-| **Fase 4** | **Autenticación y CRUDs Base** (Tablero operativo de vencimientos, cuentas, perfiles, clientes) | ⏳ Siguiente paso |
-| **Fase 5** | **Importación de Datos Históricos del Excel** (Sanitizador de precios y teléfonos con auditoría) | 🔜 Pendiente |
+| **Fase 4** | **Autenticación y CRUDs Base** (Tablero operativo de vencimientos, cuentas, perfiles, clientes) | ✅ Completada |
+| **Fase 5** | **Importación de Datos Históricos del Excel** (Sanitizador de precios y teléfonos con auditoría) | ⏳ Siguiente paso |
 | **Fase 6** | **Módulo Financiero y Cobros** (Reportes de ganancia dinámica y registro de pagos) | 🔜 Pendiente |
 | **Fase 7** | **Pruebas y Control de Calidad** | 🔜 Pendiente |
 | **Fase 8** | **Despliegue en Servidor Ubuntu** (SSL HTTPS, backups automáticos por Cron) | 🔜 Pendiente |

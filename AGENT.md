@@ -76,7 +76,8 @@ Actualmente la gestión se encuentra en un archivo Excel (`Ultimo_1_chat_1_.xlsx
 - [x] **Fase 1: Análisis y requisitos (`docs/01-analisis.md`)**
 - [x] **Fase 2: Diseño de base de datos y pantallas (`docs/02-diseno.md`)**
 - [x] **Fase 3: Migraciones y modelos**
-- [ ] **Fase 4: Login y CRUDs base (clientes, servicios, cuentas, perfiles, suscripciones, tablero de vencimientos)**
+- [x] **Fase 4: Login y CRUDs base (clientes, servicios, cuentas, perfiles, suscripciones, tablero de vencimientos)**
+- [ ] **Fase 5: Importación del Excel con reporte de inconsistencias**
 
 ---
 
@@ -98,7 +99,8 @@ Actualmente la gestión se encuentra en un archivo Excel (`Ultimo_1_chat_1_.xlsx
   - `affeb1a`: `chore: configure database connection, timezone and locale`
   - `8028b23`: `docs: add AGENT.md and docs structure for phase tracking`
   - `7be5d48`: `docs: complete Phase 1 business analysis and requirements based on Excel data`
-- [ ] **Fase 4: Login y CRUDs base (clientes, servicios, cuentas, perfiles, suscripciones, tablero de vencimientos)**
+- [x] **Fase 4: Login y CRUDs base (clientes, servicios, cuentas, perfiles, suscripciones, tablero de vencimientos)**
+- [ ] **Fase 5: Importación del Excel con reporte de inconsistencias**
 - [ ] **Fase 5: Importación del Excel con reporte de inconsistencias**
 - [ ] **Fase 6: Cobros, pagos y reportes de ganancia**
 - [ ] **Fase 7: Pruebas del sistema**
